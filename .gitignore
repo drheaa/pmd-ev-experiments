@@ -1,0 +1,68 @@
+############################
+# OS / Editor junk
+############################
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+############################
+# Julia
+############################
+*.jl~
+*.jlp
+*.jl.cov
+*.jl.mem
+
+# Julia environment artifacts
+Manifest.toml
+.julia/
+
+############################
+# Python / Jupyter (if used)
+############################
+__pycache__/
+*.pyc
+*.pyo
+
+.ipynb_checkpoints/
+
+############################
+# Data & large files
+############################
+solar-analytics-data/
+datasets/
+*.h5
+*.hdf5
+*.parquet
+*.mat
+
+############################
+# Power system simulation outputs
+############################
+*.log
+*.out
+*.json
+
+############################
+# Build / temp artifacts
+############################
+build/
+dist/
+tmp/
+temp/
+
+############################
+# Secrets & credentials
+############################
+.env
+.env.*
+*.pem
+*.key
+
+############################
+# Backup files
+############################
+*~
+*.bak

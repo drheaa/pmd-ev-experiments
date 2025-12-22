@@ -1,12 +1,14 @@
 # PMD EV Experiments
 
-This repository contains a collection of exploratory experiments built using
-**PowerModelsDistribution.jl**, focused on understanding how low-voltage
-distribution networks respond to increased electric vehicle (EV) charging load.
+This repository contains exploratory experiments built using
+**PowerModelsDistribution.jl**, focused on understanding how
+low-voltage (LV) distribution networks respond to electric vehicle (EV)
+charging load.
 
-The work here is intentionally experimental. The goal is to build intuition,
-test modelling assumptions, and explore network behaviour under stress,
-rather than to produce polished or production-ready tools.
+The work here is intentionally experimental. The aim is to build
+technical intuition, test modelling assumptions, and explore voltage
+and congestion behaviour under stress, not to produce production-ready
+or validated planning tools.
 
 ---
 
@@ -14,37 +16,75 @@ rather than to produce polished or production-ready tools.
 
 The experiments in this repository explore topics such as:
 
-- EV load injection at specific buses and phases
-- Voltage magnitude violations and binding constraints
-- Line and transformer loading under increased demand
-- Sensitivity of network behaviour to EV placement and sizing
-- Comparison between baseline and stressed network scenarios
+- EV load injection at specific buses and phases  
+- Voltage magnitude violations and binding constraints  
+- Line and transformer loading under increased demand  
+- Sensitivity of network behaviour to EV placement and sizing  
+- Comparison between baseline and stressed network scenarios  
 
 Most experiments use small to medium LV network models and focus on
 unbalanced power flow and OPF behaviour.
 
 ---
 
-## Repository Structure
+## Data Sources and Licensing
 
-```text
-pmd-ev-experiments/
-├── pmd_ev_experiments/ # Core experiment scripts and scenarios
-├── extensions/ # Custom helpers or model extensions (if used)
-├── notebooks/ # Optional analysis or plotting notebooks
-└── README.md
-```
+This repository includes **small, curated datasets** that are explicitly
+open-licensed and suitable for redistribution. Care has been taken to
+respect licensing terms, attribution requirements, and data ownership
+boundaries.
 
+### Included datasets
 
-Large datasets and external data sources are intentionally excluded from
-version control and are documented where required.
+#### 1. CSIRO Data Collection (csiro:62996)
+
+- **Source:** https://data.csiro.au/collection/csiro:62996  
+- **Provider:** Commonwealth Scientific and Industrial Research Organisation (CSIRO)  
+- **License:** Creative Commons Attribution (CC-BY)  
+
+This dataset is redistributed in accordance with the CC-BY licence.
+Where data has been subset, processed, or reformatted, this repository
+does not imply that CSIRO endorses the resulting analysis or conclusions.
+
+Proper attribution to CSIRO is retained.
 
 ---
 
-## Context 
+#### 2. Other public EV and LV load datasets
 
-This work is part of my personal learning and experimentation while working
-with **PowerModelsDistribution.jl** in an applied research context.
+Additional datasets may be included where:
+
+- redistribution is explicitly permitted under an open licence
+  (e.g. CC-BY or equivalent), and  
+- the data has been reduced, sampled, or curated for experimental use.
+
+Original sources and licences are documented inline or alongside the
+relevant data files.
+
+---
+
+### Data handling principles
+
+- Only **open-licensed** data is committed to this repository  
+- Large, raw, or upstream datasets are excluded  
+- Internal or restricted network models are **not included**  
+- Derived datasets reflect personal processing and interpretation  
+
+These choices are intentional and aim to balance reproducibility,
+ethical data use, and practical repository management.
+
+---
+
+## Context and Attribution
+
+This repository reflects **personal experimentation and learning** while
+working with PowerModelsDistribution.jl in an applied research context.
+
+Although some experiments are inspired by real-world distribution
+network research, **this repository is not an official CSIRO codebase,
+deliverable, or endorsed work**.
+
+All code, analysis, interpretations, and any errors are entirely my own.
 
 ---
 
@@ -52,22 +92,22 @@ with **PowerModelsDistribution.jl** in an applied research context.
 
 This repository is a work in progress.
 
-Experiments may change structure, be refactored, or be abandoned as new
-insights are gained. Code quality and documentation will improve iteratively
-as understanding deepens.
+Experiments may evolve, be refactored, or be abandoned as understanding
+improves. Code quality and documentation will be refined iteratively.
+
+Nothing here should be interpreted as validated network planning advice.
 
 ---
 
 ## Tools
 
-- Julia
-- PowerModelsDistribution.jl
-- JuMP
-- Ipopt (or other nonlinear solvers)
-
+- Julia  
+- PowerModelsDistribution.jl  
+- JuMP  
 ---
 
-## Notes
+## Notes to Future Me
 
-If you are reading this as a future version of me:
-be kind — this repo exists to capture thinking, not perfection.
+This repo exists to capture thinking, not perfection.
+If something looks messy, it probably reflects a real moment of learning.
+
