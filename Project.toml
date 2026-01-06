@@ -1,2 +1,4 @@
 [deps]
+Measures = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
 PowerModelsDistribution = "d7431456-977f-11e9-2de3-97ff7677985e"
+StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
