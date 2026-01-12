@@ -219,3 +219,64 @@ figdir = joinpath(@__DIR__, "..", "results", "figures")
 mkpath(figdir)
 savefig(p, joinpath(figdir, "baseline_voltage_profile.png"))
 
+function plot_voltage_histogram_snap(buses_dict; t=1, Vthreshold=1000, vmin = 0.94*230, vmax = 1.1*230)
+    colors = [:blue, :red, :black]
+    phase_a = []
+    phase_b = []
+    phase_c = []
+    for (bus_name, bus_data) in buses_dict
+        if haskey(bus_data, "vma") && bus_data["vma"][t] < Vthreshold
+            push!(phase_a, bus_data["vma"][t])
+        end
+        if haskey(bus_data, "vmb") && bus_data["vmb"][t] < Vthreshold
+            push!(phase_b, bus_data["vmb"][t])
+        end
+        if haskey(bus_data, "vmc") && bus_data["vmc"][t] < Vthreshold
+            push!(phase_c, bus_data["vmc"][t])
+        end
+    end
+
+    bins = (vmin-1):0.5:(vmax+1)
+    p = histogram(phase_a; bins, color=colors[1], label="phase a")
+    histogram!(phase_b; bins, color=colors[2], label="phase b")
+    histogram!(phase_c; bins, color=colors[3], label="phase c")
+    ylabel!("Counts (-)")
+    title!("Voltage histogram")
+    xlabel!("Voltage magnitude (V)")
+
+    # plot!([0; maxdist], [vmin; vmin], color=:red, linestyle=:dash)
+    # plot!([0; maxdist], [vmax; vmax], color=:red, linestyle=:dash)
+    display(p)
+    return p
+end
+
+p_hist = plot_voltage_histogram_snap(
+    buses_dict;
+    t=1,
+    Vthreshold=1000,
+    vmin=0.94*230,
+    vmax=1.1*230
+)
+
+savefig(p_hist, joinpath(figdir, "baseline_voltage_histogram.png"))
+# optional vector version (nice for reports)
+savefig(p_hist, joinpath(figdir, "baseline_voltage_histogram.pdf"))
+
+function plot_voltage_snap(buses_dict, lines_df; t=1, Vthreshold=1000, vmin = 0.94*230, vmax = 1.1*230)
+    p1 = plot_voltage_along_feeder_snap(buses_dict, lines_df; t=t, Vthreshold=Vthreshold, vmin = vmin, vmax = vmax)
+    p2 = plot_voltage_histogram_snap(buses_dict; t=t, Vthreshold=Vthreshold, vmin = vmin, vmax = vmax)
+    p = plot(p1, p2, layout=(1,2))
+    return p
+end
+
+p_combined = plot_voltage_snap(
+    buses_dict,
+    lines_df;
+    t=1,
+    Vthreshold=1000,
+    vmin=0.94*230,
+    vmax=1.1*230
+)
+
+savefig(p_combined, joinpath(figdir, "baseline_voltage_combined.png"))
+
