@@ -1,0 +1,2 @@
+scenario_id,statcom_bus,gen_id,qcap_kvar,qg_a_mvar,qg_b_mvar,qg_c_mvar,qg_total_mvar,qmin_a,qmin_b,qmin_c,qmax_a,qmax_b,qmax_c,at_qmin_a,at_qmin_b,at_qmin_c,at_qmax_a,at_qmax_b,at_qmax_c
+sev_22p0kw,899,2,400.0,5.867416860305204,2.9398353355018,-1.4545204109562745e-15,8.807252195807003,-Inf,-Inf,-Inf,Inf,Inf,Inf,false,false,false,false,false,false
